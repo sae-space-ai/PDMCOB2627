@@ -140,7 +140,7 @@ export default function HoldRegistry({ holdItems, setHoldItems }: Props) {
     setShowAddForm(false);
   };
 
-  const estadoColors = {
+  const estadoColors: Record<HoldItem['estado'], { bg: string; text: string; border: string; label: string }> = {
     'abierto': { bg: 'bg-amber-500/15', text: 'text-amber-400', border: 'border-amber-500/30', label: 'ABIERTO' },
     'en-verificacion': { bg: 'bg-blue-500/15', text: 'text-blue-400', border: 'border-blue-500/30', label: 'EN VERIFICACIÓN' },
     'cerrado': { bg: 'bg-emerald-500/15', text: 'text-emerald-400', border: 'border-emerald-500/30', label: 'CERRADO' },
