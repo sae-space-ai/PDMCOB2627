@@ -14,10 +14,15 @@ export default function Header() {
           </div>
           <div className="flex-1">
             <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-emerald-400 via-teal-300 to-indigo-400 bg-clip-text text-transparent">
-              Programación Didáctica 2026/2027
+              PDMCOB2627 — Programación Didáctica 2026/2027
             </h1>
             <p className="text-slate-400 mt-1">
               Música de Cámara · Orquesta · Banda — Enseñanzas Profesionales de Música
+            </p>
+            <p className="text-xs text-slate-500 mt-1">
+              <a href="https://github.com/PDMCOB2627/PDMCOB2627" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors">
+                <i className="fab fa-github mr-1"></i>Repositorio: PDMCOB2627/PDMCOB2627
+              </a>
             </p>
             <div className="flex flex-wrap gap-2 mt-3">
               <span className="px-2.5 py-1 bg-emerald-500/15 text-emerald-400 rounded-full text-xs font-medium border border-emerald-500/20">

@@ -40,7 +40,7 @@ const artifacts: Artifact[] = [
     icono: 'fas fa-cog',
     contenido: `{
   "version": 2,
-  "name": "programacion-didactica-2026-2027",
+  "name": "pdm-cob-2627",
   "builds": [
     { "src": "index.html", "use": "@vercel/static" }
   ],
@@ -55,12 +55,15 @@ const artifacts: Artifact[] = [
     descripcion: 'Documentación del repositorio con estructura de bloques y estado de HOLD',
     lenguaje: 'markdown',
     icono: 'fas fa-book',
-    contenido: `# Programación Didáctica 2026/2027
+    contenido: `# PDMCOB2627 — Programación Didáctica 2026/2027
 
 ## Música de Cámara · Orquesta · Banda
 
 **Enseñanzas Profesionales de Música — Extremadura**  
 **Conservatorio Oficial de Música "Tomás Bote Lavado" de Almendralejo**
+
+**Repositorio:** [github.com/PDMCOB2627/PDMCOB2627](https://github.com/PDMCOB2627/PDMCOB2627)  
+**Despliegue:** [pdm-cob-2627.vercel.app](https://pdm-cob-2627.vercel.app)
 
 ---
 
@@ -332,7 +335,7 @@ export default function ArtifactGenerator({ documentLoaded }: Props) {
           <div className="mt-4 bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
             <h4 className="text-xs font-medium text-slate-400 uppercase tracking-wider mb-3">Estructura del repositorio</h4>
             <pre className="text-xs text-slate-400 font-mono">
-{`programacion-didactica-2026-2027/
+{`PDMCOB2627/
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml

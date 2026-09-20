@@ -1,4 +1,7 @@
-# 🚀 Despliegue — Instrucciones Rápidas
+# 🚀 Despliegue — PDMCOB2627
+
+**Repositorio:** [github.com/PDMCOB2627/PDMCOB2627](https://github.com/PDMCOB2627/PDMCOB2627)  
+**Despliegue objetivo:** [pdm-cob-2627.vercel.app](https://pdm-cob-2627.vercel.app)
 
 ## ⚠️ IMPORTANTE
 
@@ -77,7 +80,7 @@ git commit -m "Initial deploy: Programación Didáctica 2026/2027"
 ### Paso 4: Crear repositorio en GitHub
 
 ```bash
-gh repo create programacion-didactica-2026-2027 --public --source=. --remote=origin --push
+gh repo create PDMCOB2627/PDMCOB2627 --public --source=. --remote=origin --push
 ```
 
 **Nota:** Si prefieres privado, cambia `--public` por `--private`
@@ -103,7 +106,7 @@ Para que GitHub Actions despliegue automáticamente en cada push:
 ### Paso 1: Obtener token de Vercel
 
 ```bash
-vercel tokens create programacion-didactica-deploy
+vercel tokens create pdm-cob-2627-deploy
 ```
 
 O crea uno en: https://vercel.com/account/tokens
@@ -149,15 +152,15 @@ vercel ls
 vercel inspect
 
 # Probar URL
-curl -I https://programacion-didactica-2026-2027.vercel.app
+curl -I https://pdm-cob-2627.vercel.app
 ```
 
 ---
 
 ## 📍 URLs Finales
 
-- **GitHub:** https://github.com/<TU_USUARIO>/programacion-didactica-2026-2027
-- **Producción:** https://programacion-didactica-2026-2027.vercel.app
+- **GitHub:** https://github.com/PDMCOB2627/PDMCOB2627
+- **Producción:** https://pdm-cob-2627.vercel.app
 
 ---
 
@@ -167,7 +170,7 @@ curl -I https://programacion-didactica-2026-2027.vercel.app
 
 ```bash
 git remote -v
-git remote set-url origin https://github.com/<TU_USUARIO>/programacion-didactica-2026-2027.git
+git remote set-url origin https://github.com/PDMCOB2627/PDMCOB2627.git
 ```
 
 ### Error: "vercel link failed"
@@ -236,7 +239,7 @@ npm install -g vercel@latest
 Si encuentras problemas:
 
 1. Revisa los logs de Vercel: `vercel logs`
-2. Revisa GitHub Actions: https://github.com/<TU_USUARIO>/programacion-didactica-2026-2027/actions
+2. Revisa GitHub Actions: https://github.com/PDMCOB2627/PDMCOB2627/actions
 3. Documentación Vercel: https://vercel.com/docs
 4. Documentación GitHub Actions: https://docs.github.com/en/actions
 

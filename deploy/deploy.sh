@@ -1,15 +1,20 @@
 #!/bin/bash
 
 # ============================================
-# Script de Despliegue — Programación Didáctica 2026/2027
+# Script de Despliegue — PDMCOB2627
+# Programación Didáctica 2026/2027
 # ============================================
 # Este script automatiza el despliegue en GitHub + Vercel
+# Repositorio: github.com/PDMCOB2627/PDMCOB2627
 # Ejecutar desde el directorio deploy/
 # ============================================
 
 set -e  # Detener en caso de error
 
-echo "🚀 Iniciando despliegue de Programación Didáctica 2026/2027"
+echo "🚀 Iniciando despliegue de PDMCOB2627"
+echo "============================================================"
+echo "Repositorio: github.com/PDMCOB2627/PDMCOB2627"
+echo "Producción:  pdm-cob-2627.vercel.app"
 echo "============================================================"
 echo ""
 
@@ -37,7 +42,7 @@ echo ""
 # Añadir archivos
 echo "📝 Añadiendo archivos..."
 git add .
-git commit -m "Initial deploy: Programación Didáctica 2026/2027"
+git commit -m "Initial deploy: PDMCOB2627 — Programación Didáctica 2026/2027"
 echo "✅ Archivos añadidos y commit realizado"
 echo ""
 
@@ -52,7 +57,7 @@ if [[ ! "$confirm" =~ ^[sS]$ ]]; then
     exit 0
 fi
 
-gh repo create programacion-didactica-2026-2027 --public --source=. --remote=origin --push
+gh repo create PDMCOB2627/PDMCOB2627 --public --source=. --remote=origin --push
 echo "✅ Repositorio creado y push realizado"
 echo ""
 
@@ -68,12 +73,12 @@ vercel deploy --prod
 echo ""
 
 echo "============================================================"
-echo "✅ DESPLIEGUE COMPLETADO"
+echo "✅ DESPLIEGUE COMPLETADO — PDMCOB2627"
 echo "============================================================"
 echo ""
 echo "📍 URLs:"
-echo "   GitHub: https://github.com/$(gh config get user)/programacion-didactica-2026-2027"
-echo "   Producción: https://programacion-didactica-2026-2027.vercel.app"
+echo "   GitHub: https://github.com/PDMCOB2627/PDMCOB2627"
+echo "   Producción: https://pdm-cob-2627.vercel.app"
 echo ""
 echo "📋 Próximos pasos:"
 echo "   1. Configura los secretos en GitHub:"

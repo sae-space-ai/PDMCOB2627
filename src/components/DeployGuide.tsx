@@ -29,9 +29,9 @@ const phases: Phase[] = [
     nombre: 'Creación del repositorio',
     descripcion: 'Inicializa Git, copia artefactos y crea el repo en GitHub.',
     comandos: [
-      { etiqueta: 'Inicializar repositorio', codigo: 'mkdir programacion-didactica-2026-2027\ncd programacion-didactica-2026-2027\ngit init\ngit branch -M main' },
+      { etiqueta: 'Inicializar repositorio', codigo: 'mkdir PDMCOB2627\ncd PDMCOB2627\ngit init\ngit branch -M main' },
       { etiqueta: 'Copiar artefactos', codigo: '# Copia aquí los archivos generados:\n# index.html, README.md, vercel.json\n# .gitignore, CHANGELOG.md, HOLD_REGISTRY.md\n# .github/workflows/deploy.yml' },
-      { etiqueta: 'Crear repo remoto', codigo: 'gh repo create programacion-didactica-2026-2027 --public --source=. --remote=origin --push' },
+      { etiqueta: 'Crear repo remoto', codigo: 'gh repo create PDMCOB2627/PDMCOB2627 --public --source=. --remote=origin --push' },
     ],
   },
   {
@@ -48,7 +48,7 @@ const phases: Phase[] = [
     nombre: 'Configuración de secretos',
     descripcion: 'Añade los tokens necesarios como secretos en GitHub.',
     comandos: [
-      { etiqueta: 'Crear token Vercel', codigo: 'vercel tokens create programacion-didactica-deploy', nota: 'O usa uno existente en vercel.com/account/tokens' },
+      { etiqueta: 'Crear token Vercel', codigo: 'vercel tokens create pdm-cob-2627-deploy', nota: 'O usa uno existente en vercel.com/account/tokens' },
       { etiqueta: 'Añadir secretos', codigo: 'gh secret set VERCEL_TOKEN --body "<TOKEN>"\ngh secret set VERCEL_ORG_ID --body "<ORG_ID>"\ngh secret set VERCEL_PROJECT_ID --body "<PROJECT_ID>"', nota: '⚠️ Sustituye los valores. No expongas tokens.' },
       { etiqueta: 'Verificar', codigo: 'gh secret list' },
     ],
@@ -58,7 +58,7 @@ const phases: Phase[] = [
     nombre: 'Despliegue inicial',
     descripcion: 'Primer commit, push y deploy.',
     comandos: [
-      { etiqueta: 'Commit y push', codigo: 'git add .\ngit commit -m "Initial deploy: Programación Didáctica 2026/2027 (versión depurada)"\ngit push origin main' },
+      { etiqueta: 'Commit y push', codigo: 'git add .\ngit commit -m "Initial deploy: PDMCOB2627 — Programación Didáctica 2026/2027 (versión depurada)"\ngit push origin main' },
       { etiqueta: 'Deploy manual', codigo: 'vercel deploy --prod' },
       { etiqueta: 'Verificar', codigo: 'vercel ls' },
     ],
@@ -68,7 +68,7 @@ const phases: Phase[] = [
     nombre: 'Verificación final',
     descripcion: 'Comprueba que la URL responde correctamente.',
     comandos: [
-      { etiqueta: 'Test URL', codigo: 'curl -I https://<proyecto>.vercel.app' },
+      { etiqueta: 'Test URL', codigo: 'curl -I https://pdm-cob-2627.vercel.app' },
       { etiqueta: 'Revisar logs', codigo: 'vercel logs --environment production --level error --since 5m' },
     ],
   },

@@ -1,13 +1,18 @@
 # ============================================
-# Script de Despliegue — Programación Didáctica 2026/2027
+# Script de Despliegue — PDMCOB2627
+# Programación Didáctica 2026/2027
 # ============================================
 # Este script automatiza el despliegue en GitHub + Vercel
+# Repositorio: github.com/PDMCOB2627/PDMCOB2627
 # Ejecutar desde el directorio deploy/ en PowerShell
 # ============================================
 
 $ErrorActionPreference = "Stop"
 
-Write-Host "🚀 Iniciando despliegue de Programación Didáctica 2026/2027" -ForegroundColor Green
+Write-Host "🚀 Iniciando despliegue de PDMCOB2627" -ForegroundColor Green
+Write-Host "============================================================" -ForegroundColor Cyan
+Write-Host "Repositorio: github.com/PDMCOB2627/PDMCOB2627" -ForegroundColor Cyan
+Write-Host "Producción:  pdm-cob-2627.vercel.app" -ForegroundColor Cyan
 Write-Host "============================================================" -ForegroundColor Cyan
 Write-Host ""
 
@@ -48,7 +53,7 @@ Write-Host ""
 # Añadir archivos
 Write-Host "📝 Añadiendo archivos..." -ForegroundColor Yellow
 git add .
-git commit -m "Initial deploy: Programación Didáctica 2026/2027"
+git commit -m "Initial deploy: PDMCOB2627 — Programación Didáctica 2026/2027"
 Write-Host "✅ Archivos añadidos y commit realizado" -ForegroundColor Green
 Write-Host ""
 
@@ -63,7 +68,7 @@ if ($confirm -ne "s" -and $confirm -ne "S") {
     exit 0
 }
 
-gh repo create programacion-didactica-2026-2027 --public --source=. --remote=origin --push
+gh repo create PDMCOB2627/PDMCOB2627 --public --source=. --remote=origin --push
 Write-Host "✅ Repositorio creado y push realizado" -ForegroundColor Green
 Write-Host ""
 
@@ -79,13 +84,12 @@ vercel deploy --prod
 Write-Host ""
 
 Write-Host "============================================================" -ForegroundColor Cyan
-Write-Host "✅ DESPLIEGUE COMPLETADO" -ForegroundColor Green
+Write-Host "✅ DESPLIEGUE COMPLETADO — PDMCOB2627" -ForegroundColor Green
 Write-Host "============================================================" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "📍 URLs:" -ForegroundColor Cyan
-$username = gh config get user
-Write-Host "   GitHub: https://github.com/$username/programacion-didactica-2026-2027" -ForegroundColor White
-Write-Host "   Producción: https://programacion-didactica-2026-2027.vercel.app" -ForegroundColor White
+Write-Host "   GitHub: https://github.com/PDMCOB2627/PDMCOB2627" -ForegroundColor White
+Write-Host "   Producción: https://pdm-cob-2627.vercel.app" -ForegroundColor White
 Write-Host ""
 Write-Host "📋 Próximos pasos:" -ForegroundColor Cyan
 Write-Host "   1. Configura los secretos en GitHub:" -ForegroundColor White

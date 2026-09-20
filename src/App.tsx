@@ -90,8 +90,13 @@ function App() {
 
       {/* Footer */}
       <footer className="border-t border-slate-700/50 mt-16 py-8 text-center text-slate-500 text-sm">
-        <p className="font-medium text-slate-400">Programación Didáctica 2026/2027</p>
+        <p className="font-medium text-slate-400">PDMCOB2627 — Programación Didáctica 2026/2027</p>
         <p className="mt-1">Música de Cámara · Orquesta · Banda — Enseñanzas Profesionales de Música</p>
+        <p className="mt-2">
+          <a href="https://github.com/PDMCOB2627/PDMCOB2627" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:text-emerald-300 transition-colors">
+            <i className="fab fa-github mr-1"></i>github.com/PDMCOB2627/PDMCOB2627
+          </a>
+        </p>
         <p className="mt-2 text-xs text-slate-600">
           Herramienta de gestión documental y despliegue · Principio de veracidad normativa · Disciplina HOLD
         </p>

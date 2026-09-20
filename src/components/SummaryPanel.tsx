@@ -13,8 +13,8 @@ export default function SummaryPanel({ documentLoaded, holdItems, auditChecks }:
   const checksFallo = auditChecks.filter(c => c.estado === 'fallo').length;
 
   const summary = `--- RESUMEN DE OPERACIÓN ---
-Repositorio: https://github.com/<USUARIO>/programacion-didactica-2026-2027
-Producción: https://programacion-didactica-2026-2027.vercel.app
+Repositorio: https://github.com/PDMCOB2627/PDMCOB2627
+Producción: https://pdm-cob-2627.vercel.app
 CI/CD: ${documentLoaded ? '✅ LISTO PARA ACTIVAR' : '❌ PENDIENTE (documento no cargado)'}
 Artefactos generados: index.html, README.md, vercel.json, CHANGELOG.md, HOLD_REGISTRY.md
 Bloques procesados: I–XXI + auditoría
@@ -85,8 +85,8 @@ Estado de auditoría: ${checksSuperados}/12
         </h3>
         <div className="space-y-3">
           {[
-            { label: 'A. Repositorio GitHub', desc: 'https://github.com/<USUARIO>/programacion-didactica-2026-2027', done: false },
-            { label: 'B. URL de producción en Vercel', desc: 'https://programacion-didactica-2026-2027.vercel.app', done: false },
+            { label: 'A. Repositorio GitHub', desc: 'https://github.com/PDMCOB2627/PDMCOB2627', done: false },
+            { label: 'B. URL de producción en Vercel', desc: 'https://pdm-cob-2627.vercel.app', done: false },
             { label: 'C. CI/CD activo', desc: 'Push a main → deploy automático', done: false },
             { label: 'D. HOLD_REGISTRY.md', desc: `${holdAbiertos} elementos abiertos, ${holdCerrados} cerrados`, done: holdAbiertos === 0 },
             { label: 'E. Ampliaciones realizadas', desc: 'Desarrollos propios con trazabilidad', done: documentLoaded },

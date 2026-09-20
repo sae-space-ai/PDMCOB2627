@@ -1,6 +1,9 @@
-# Changelog
+# Changelog — PDMCOB2627
 
 Todos los cambios notables en este proyecto se documentan en este archivo.
+
+**Repositorio:** [github.com/PDMCOB2627/PDMCOB2627](https://github.com/PDMCOB2627/PDMCOB2627)  
+**Despliegue:** [pdm-cob-2627.vercel.app](https://pdm-cob-2627.vercel.app)
 
 El formato está basado en [Keep a Changelog](https://keepachangelog.com/es/1.0.0/).
 

@@ -1,9 +1,12 @@
-# Programación Didáctica 2026/2027
+# PDMCOB2627 — Programación Didáctica 2026/2027
 
 ## Música de Cámara · Orquesta · Banda
 
 **Enseñanzas Profesionales de Música — Extremadura**  
 **Conservatorio Oficial de Música "Tomás Bote Lavado" de Almendralejo**
+
+**Repositorio:** [github.com/PDMCOB2627/PDMCOB2627](https://github.com/PDMCOB2627/PDMCOB2627)  
+**Despliegue:** [pdm-cob-2627.vercel.app](https://pdm-cob-2627.vercel.app)
 
 ---
 
@@ -56,8 +59,8 @@ Automático en Vercel al hacer push a `main`.
 
 ### URLs
 
-- **Producción:** https://programacion-didactica-2026-2027.vercel.app
-- **Repositorio:** https://github.com/<USUARIO>/programacion-didactica-2026-2027
+- **Producción:** https://pdm-cob-2627.vercel.app
+- **Repositorio:** https://github.com/PDMCOB2627/PDMCOB2627
 
 ## Uso
 

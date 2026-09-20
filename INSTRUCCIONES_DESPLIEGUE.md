@@ -1,4 +1,7 @@
-# Instrucciones de Despliegue
+# PDMCOB2627 — Instrucciones de Despliegue
+
+**Repositorio:** [github.com/PDMCOB2627/PDMCOB2627](https://github.com/PDMCOB2627/PDMCOB2627)  
+**Producción:** [pdm-cob-2627.vercel.app](https://pdm-cob-2627.vercel.app)
 
 ## Requisitos previos
 
@@ -40,8 +43,8 @@ Los archivos de despliegue están en el directorio `deploy/`. Cópialos a un nue
 
 ```bash
 # Crear directorio de trabajo
-mkdir programacion-didactica-2026-2027
-cd programacion-didactica-2027
+mkdir PDMCOB2627
+cd PDMCOB2627
 
 # Copiar archivos de despliegue
 cp -r ../deploy/* .
@@ -67,17 +70,17 @@ Deberías ver:
 git init
 git branch -M main
 git add .
-git commit -m "Initial deploy: Programación Didáctica 2026/2027 (versión depurada)"
+git commit -m "Initial deploy: PDMCOB2627 — Programación Didáctica 2026/2027 (versión depurada)"
 ```
 
 ## Paso 3: Crear repositorio en GitHub
 
 ```bash
-# Crear repositorio público
-gh repo create programacion-didactica-2026-2027 --public --source=. --remote=origin --push
+# Crear repositorio público bajo la organización PDMCOB2627
+gh repo create PDMCOB2627/PDMCOB2627 --public --source=. --remote=origin --push
 
 # O si prefieres privado:
-gh repo create programacion-didactica-2026-2027 --private --source=. --remote=origin --push
+gh repo create PDMCOB2627/PDMCOB2627 --private --source=. --remote=origin --push
 ```
 
 ## Paso 4: Vincular con Vercel
@@ -101,7 +104,7 @@ Anota los valores de `projectId` y `orgId`.
 Primero, obtén un token de Vercel:
 
 ```bash
-vercel tokens create programacion-didactica-deploy
+vercel tokens create pdm-cob-2627-deploy
 ```
 
 O crea uno manualmente en: https://vercel.com/account/tokens
@@ -146,7 +149,7 @@ vercel ls
 vercel inspect
 
 # Verificar que la URL responde
-curl -I https://programacion-didactica-2026-2027.vercel.app
+curl -I https://pdm-cob-2627.vercel.app
 ```
 
 ## Paso 8: Verificar CI/CD
@@ -179,7 +182,7 @@ vercel logs --environment production --level error --since 5m
 ## Estructura final
 
 ```
-programacion-didactica-2026-2027/
+PDMCOB2627/
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml
@@ -193,8 +196,8 @@ programacion-didactica-2026-2027/
 
 ## URLs finales
 
-- **Repositorio GitHub:** https://github.com/<TU_USUARIO>/programacion-didactica-2026-2027
-- **Producción Vercel:** https://programacion-didactica-2026-2027.vercel.app
+- **Repositorio GitHub:** https://github.com/PDMCOB2627/PDMCOB2627
+- **Producción Vercel:** https://pdm-cob-2627.vercel.app
 
 ## Mantenimiento
 
@@ -214,7 +217,7 @@ Para actualizar el documento:
 ### Error: "Repository not found"
 ```bash
 git remote -v
-git remote set-url origin https://github.com/<TU_USUARIO>/programacion-didactica-2026-2027.git
+git remote set-url origin https://github.com/PDMCOB2627/PDMCOB2627.git
 ```
 
 ### Error: "vercel link failed"
@@ -249,11 +252,8 @@ vercel deploy --prod
 
 Si encuentras problemas:
 1. Revisa los logs de Vercel: `vercel logs`
-2. Revisa los logs de GitHub Actions: https://github.com/<TU_USUARIO>/programacion-didactica-2026-2027/actions
+2. Revisa los logs de GitHub Actions: https://github.com/PDMCOB2627/PDMCOB2627/actions
 3. Consulta la documentación de Vercel: https://vercel.com/docs
 4. Consulta la documentación de GitHub Actions: https://docs.github.com/en/actions
 
 ---
-
-**Documento generado como herramienta de apoyo para el despliegue**
-**Programación Didáctica 2026/2027 — Música de Cámara · Orquesta · Banda**
