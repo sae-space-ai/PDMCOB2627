@@ -1,63 +1,100 @@
 import { useState } from 'react';
-import DeployGuide from './components/DeployGuide';
 import Header from './components/Header';
-import FileViewer from './components/FileViewer';
+import DocumentLoader from './components/DocumentLoader';
+import BlockViewer from './components/BlockViewer';
+import HoldRegistry from './components/HoldRegistry';
+import AuditChecks from './components/AuditChecks';
+import ArtifactGenerator from './components/ArtifactGenerator';
+import DeployGuide from './components/DeployGuide';
 import SummaryPanel from './components/SummaryPanel';
+import type { TabId, HoldItem, AuditCheck } from './types';
+
+const tabs: { id: TabId; label: string; icon: string }[] = [
+  { id: 'documento', label: 'Documento', icon: 'fa-file-lines' },
+  { id: 'bloques', label: 'Bloques I–XXI', icon: 'fa-layer-group' },
+  { id: 'hold', label: 'HOLD', icon: 'fa-pause-circle' },
+  { id: 'auditoria', label: 'Auditoría', icon: 'fa-clipboard-check' },
+  { id: 'artefactos', label: 'Artefactos', icon: 'fa-file-code' },
+  { id: 'despliegue', label: 'Despliegue', icon: 'fa-rocket' },
+  { id: 'resumen', label: 'Resumen', icon: 'fa-flag-checkered' },
+];
 
 function App() {
-  const [activeTab, setActiveTab] = useState<'guide' | 'files' | 'summary'>('guide');
+  const [activeTab, setActiveTab] = useState<TabId>('documento');
+  const [documentLoaded, setDocumentLoaded] = useState(false);
+  const [documentContent, setDocumentContent] = useState('');
+  const [holdItems, setHoldItems] = useState<HoldItem[]>([]);
+  const [auditChecks, setAuditChecks] = useState<AuditCheck[]>([]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950 text-white">
       <Header />
-      
-      {/* Navigation Tabs */}
-      <div className="max-w-6xl mx-auto px-4 pt-6">
-        <div className="flex gap-2 bg-slate-800/50 p-1.5 rounded-xl w-fit">
-          <button
-            onClick={() => setActiveTab('guide')}
-            className={`px-5 py-2.5 rounded-lg font-medium transition-all ${
-              activeTab === 'guide'
-                ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/25'
-                : 'text-slate-400 hover:text-white hover:bg-slate-700/50'
-            }`}
-          >
-            <i className="fas fa-list-ol mr-2"></i>Guía de Despliegue
-          </button>
-          <button
-            onClick={() => setActiveTab('files')}
-            className={`px-5 py-2.5 rounded-lg font-medium transition-all ${
-              activeTab === 'files'
-                ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/25'
-                : 'text-slate-400 hover:text-white hover:bg-slate-700/50'
-            }`}
-          >
-            <i className="fas fa-file-code mr-2"></i>Archivos
-          </button>
-          <button
-            onClick={() => setActiveTab('summary')}
-            className={`px-5 py-2.5 rounded-lg font-medium transition-all ${
-              activeTab === 'summary'
-                ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/25'
-                : 'text-slate-400 hover:text-white hover:bg-slate-700/50'
-            }`}
-          >
-            <i className="fas fa-clipboard-check mr-2"></i>Resumen Final
-          </button>
+
+      {/* Navigation */}
+      <nav className="sticky top-0 z-40 bg-slate-900/80 backdrop-blur-xl border-b border-slate-700/50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex gap-1 overflow-x-auto py-2 scrollbar-hide">
+            {tabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-lg font-medium text-sm whitespace-nowrap transition-all ${
+                  activeTab === tab.id
+                    ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/25'
+                    : 'text-slate-400 hover:text-white hover:bg-slate-700/50'
+                }`}
+              >
+                <i className={`fas ${tab.icon} text-xs`}></i>
+                {tab.label}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      </nav>
 
       {/* Content */}
-      <div className="max-w-6xl mx-auto px-4 py-8">
-        {activeTab === 'guide' && <DeployGuide />}
-        {activeTab === 'files' && <FileViewer />}
-        {activeTab === 'summary' && <SummaryPanel />}
-      </div>
+      <main className="max-w-7xl mx-auto px-4 py-8">
+        {activeTab === 'documento' && (
+          <DocumentLoader
+            onDocumentLoaded={(content) => {
+              setDocumentContent(content);
+              setDocumentLoaded(true);
+            }}
+            documentLoaded={documentLoaded}
+            documentContent={documentContent}
+          />
+        )}
+        {activeTab === 'bloques' && (
+          <BlockViewer documentContent={documentContent} documentLoaded={documentLoaded} />
+        )}
+        {activeTab === 'hold' && (
+          <HoldRegistry holdItems={holdItems} setHoldItems={setHoldItems} />
+        )}
+        {activeTab === 'auditoria' && (
+          <AuditChecks auditChecks={auditChecks} setAuditChecks={setAuditChecks} />
+        )}
+        {activeTab === 'artefactos' && (
+          <ArtifactGenerator documentLoaded={documentLoaded} />
+        )}
+        {activeTab === 'despliegue' && (
+          <DeployGuide documentLoaded={documentLoaded} />
+        )}
+        {activeTab === 'resumen' && (
+          <SummaryPanel
+            documentLoaded={documentLoaded}
+            holdItems={holdItems}
+            auditChecks={auditChecks}
+          />
+        )}
+      </main>
 
       {/* Footer */}
-      <footer className="border-t border-slate-700/50 mt-16 py-6 text-center text-slate-500 text-sm">
-        <p>Deploy Guide — Programación Didáctica 2026/2027 — Música de Cámara · Orquesta · Banda</p>
-        <p className="mt-1">Generado como herramienta de apoyo para el despliegue en GitHub + Vercel</p>
+      <footer className="border-t border-slate-700/50 mt-16 py-8 text-center text-slate-500 text-sm">
+        <p className="font-medium text-slate-400">Programación Didáctica 2026/2027</p>
+        <p className="mt-1">Música de Cámara · Orquesta · Banda — Enseñanzas Profesionales de Música</p>
+        <p className="mt-2 text-xs text-slate-600">
+          Herramienta de gestión documental y despliegue · Principio de veracidad normativa · Disciplina HOLD
+        </p>
       </footer>
     </div>
   );
