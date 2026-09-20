@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import CodeBlock from './CodeBlock';
+import SecretConfigurator from './SecretConfigurator';
 
 interface Props {
   documentLoaded: boolean;
@@ -157,6 +158,20 @@ export default function DeployGuide({ documentLoaded }: Props) {
                     )}
                   </div>
                 ))}
+
+                {/* Secret Configurator for Phase 4 */}
+                {phase.numero === 4 && (
+                  <div className="mt-6 pt-4 border-t border-slate-700/30">
+                    <div className="flex items-center gap-2 mb-4">
+                      <i className="fas fa-magic text-purple-400"></i>
+                      <span className="text-sm font-medium text-white">Configurador interactivo de secretos</span>
+                    </div>
+                    <p className="text-xs text-slate-400 mb-4">
+                      Introduce tus valores reales abajo y se generarán los comandos exactos listos para copiar:
+                    </p>
+                    <SecretConfigurator />
+                  </div>
+                )}
 
                 {!completedPhases.has(phase.numero) && (
                   <button
