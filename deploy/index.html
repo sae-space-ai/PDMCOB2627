@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programación Didáctica 2026/2027 — Música de Cámara · Orquesta · Banda</title>
+    <meta name="description" content="Programación Didáctica 2026/2027 — Música de Cámara, Orquesta y Banda — Enseñanzas Profesionales de Música — Conservatorio Oficial de Música Tomás Bote Lavado de Almendralejo">
+    <style>
+        /* ============================================
+           VARIABLES Y RESET
+           ============================================ */
+        :root {
+            --color-primary: #059669;
+            --color-primary-light: #d1fae5;
+            --color-primary-dark: #065f46;
+            --color-hold: #d97706;
+            --color-hold-light: #fef3c7;
+            --color-hold-dark: #92400e;
+            --color-norma: #2563eb;
+            --color-norma-light: #dbeafe;
+            --color-text: #1e293b;
+            --color-text-light: #64748b;
+            --color-bg: #ffffff;
+            --color-bg-alt: #f8fafc;
+            --color-border: #e2e8f0;
+            --color-accent: #7c3aed;
+            --font-body: 'Georgia', 'Times New Roman', serif;
+            --font-heading: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'SF Mono', 'Fira Code', monospace;
+            --max-width: 920px;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            background: var(--color-bg);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* ============================================
+           NAVEGACIÓN FIJA
+           ============================================ */
+        .nav-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-border);
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-fixed .nav-title {
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-primary-dark);
+        }
+        .nav-fixed .nav-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .nav-fixed button {
+            font-family: var(--font-heading);
+            font-size: 0.75rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            border: 1px solid var(--color-border);
+            background: white;
+            color: var(--color-text);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .nav-fixed button:hover {
+            background: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+        }
+
+        /* ============================================
+           PORTADA
+           ============================================ */
+        .portada {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #f0f9ff 100%);
+            border-bottom: 3px solid var(--color-primary);
+        }
+        .portada .escudo {
+            width: 100px;
+            height: 100px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(5,150,105,0.2);
+        }
+        .portada .escudo span {
+            font-size: 2.5rem;
+            color: white;
+        }
+        .portada h1 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--color-primary-dark);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+        .portada h2 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--color-text-light);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+        .portada .curso {
+            display: inline-block;
+            background: var(--color-primary);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 2rem;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        .portada .centro {
+            font-size: 0.95rem;
+            color: var(--color-text-light);
+            max-width: 500px;
+        }
+        .portada .materias {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .portada .materia-tag {
+            background: white;
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary-dark);
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* ============================================
+           CONTENIDO PRINCIPAL
+           ============================================ */
+        .contenido {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* ============================================
+           ÍNDICE
+           ============================================ */
+        .indice {
+            background: var(--color-bg-alt);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+        .indice h2 {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--color-primary-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .indice ol {
+            columns: 2;
+            column-gap: 2rem;
+            list-style: none;
+            counter-reset: item;
+        }
+        .indice li {
+            counter-increment: item;
+            padding: 0.3rem 0;
+            border-bottom: 1px dotted var(--color-border);
+        }
+        .indice li::before {
+            content: counter(item, upper-roman) ". ";
+            font-weight: 600;
+            color: var(--color-primary);
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+        }
+        .indice a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .indice a:hover {
+            color: var(--color-primary);
+        }
+
+        /* ============================================
+           BLOQUES
+           ============================================ */
+        .bloque {
+            margin-bottom: 3rem;
+            page-break-inside: avoid;
+        }
+        .bloque-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--color-primary);
+        }
+        .bloque-numero {
+            background: var(--color-primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+        .bloque-titulo {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            color: var(--color-primary-dark);
+        }
+
+        /* ============================================
+           ETIQUETAS DE CLASIFICACIÓN
+           ============================================ */
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-family: var(--font-heading);
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .tag-norma { background: var(--color-norma-light); color: var(--color-norma); }
+        .tag-hold { background: var(--color-hold-light); color: var(--color-hold-dark); border: 1px solid var(--color-hold); }
+        .tag-propio { background: #f0fdf4; color: #166534; }
+        .tag-evidencia { background: #ecfeff; color: #155e75; }
+        .tag-institucional { background: #ede9fe; color: #5b21b6; }
+
+        /* ============================================
+           TABLAS
+           ============================================ */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+        th, td {
+            border: 1px solid var(--color-border);
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: var(--color-bg-alt);
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        tr:nth-child(even) { background: var(--color-bg-alt); }
+
+        /* ============================================
+           CAJAS HOLD
+           ============================================ */
+        .hold-box {
+            background: var(--color-hold-light);
+            border: 2px solid var(--color-hold);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            position: relative;
+        }
+        .hold-box::before {
+            content: "⏳ HOLD";
+            position: absolute;
+            top: -0.6rem;
+            left: 1rem;
+            background: var(--color-hold);
+            color: white;
+            font-family: var(--font-heading);
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.1rem 0.5rem;
+            border-radius: 4px;
+        }
+        .hold-box p {
+            font-size: 0.9rem;
+            color: var(--color-hold-dark);
+            margin-top: 0.3rem;
+        }
+
+        /* ============================================
+           LISTAS
+           ============================================ */
+        ul, ol { margin: 1rem 0 1rem 1.5rem; }
+        li { margin-bottom: 0.4rem; }
+
+        /* ============================================
+           ENCABEZADOS
+           ============================================ */
+        h3 {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            color: var(--color-primary-dark);
+            margin: 2rem 0 0.75rem;
+        }
+        h4 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            color: var(--color-text);
+            margin: 1.5rem 0 0.5rem;
+        }
+
+        /* ============================================
+           PÁRRAFOS
+           ============================================ */
+        p { margin-bottom: 1rem; }
+
+        /* ============================================
+           BOTÓN DESCARGA
+           ============================================ */
+        .btn-descarga {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(5,150,105,0.3);
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            z-index: 999;
+        }
+        .btn-descarga:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 24px rgba(5,150,105,0.4);
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--color-border);
+            color: var(--color-text-light);
+            font-size: 0.85rem;
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 768px) {
+            .portada h1 { font-size: 1.8rem; }
+            .indice ol { columns: 1; }
+            .bloque-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 0.4rem; }
+        }
+
+        /* ============================================
+           IMPRESIÓN PDF
+           ============================================ */
+        @media print {
+            .nav-fixed, .btn-descarga { display: none !important; }
+            body { font-size: 11pt; line-height: 1.5; }
+            .portada { min-height: auto; padding: 2rem; page-break-after: always; }
+            .bloque { page-break-inside: avoid; }
+            .indice { page-break-after: always; }
+            .contenido { padding: 0; max-width: 100%; }
+            h1, h2, h3 { page-break-after: avoid; }
+            table { page-break-inside: avoid; }
+            .hold-box { border-width: 1px; }
+            a { color: inherit; text-decoration: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVEGACIÓN FIJA -->
+    <nav class="nav-fixed">
+        <span class="nav-title">📋 Programación Didáctica 2026/2027</span>
+        <div class="nav-actions">
+            <button onclick="window.print()" title="Imprimir / Guardar PDF">🖨️ PDF</button>
+            <button onclick="document.getElementById('indice-section').scrollIntoView({behavior:'smooth'})" title="Ir al índice">📑 Índice</button>
+        </div>
+    </nav>
+
+    <!-- PORTADA -->
+    <header class="portada">
+        <div class="escudo">
+            <span>🎵</span>
+        </div>
+        <h1>Programación Didáctica</h1>
+        <h2>Curso 2026 / 2027</h2>
+        <div class="curso">Enseñanzas Profesionales de Música</div>
+        <div class="materias">
+            <span class="materia-tag">🎻 Música de Cámara</span>
+            <span class="materia-tag">🎼 Orquesta</span>
+            <span class="materia-tag">🎺 Banda</span>
+        </div>
+        <p class="centro" style="margin-top: 2rem;">
+            <strong>Conservatorio Oficial de Música<br>"Tomás Bote Lavado"</strong><br>
+            Almendralejo — Extremadura
+        </p>
+    </header>
+
+    <!-- CONTENIDO -->
+    <div class="contenido">
+
+        <!-- ÍNDICE -->
+        <section class="indice" id="indice-section">
+            <h2>📑 Índice de contenidos</h2>
+            <ol>
+                <li><a href="#bloque-1">Marco normativo</a></li>
+                <li><a href="#bloque-2">Contexto institucional</a></li>
+                <li><a href="#bloque-3">Competencias clave y perfil de salida</a></li>
+                <li><a href="#bloque-4">Objetivos generales</a></li>
+                <li><a href="#bloque-5">Contenidos</a></li>
+                <li><a href="#bloque-6">Criterios de evaluación</a></li>
+                <li><a href="#bloque-7">Metodología</a></li>
+                <li><a href="#bloque-8">Repertorio — Banda</a></li>
+                <li><a href="#bloque-9">Repertorio — Orquesta</a></li>
+                <li><a href="#bloque-10">Repertorio — Música de Cámara</a></li>
+                <li><a href="#bloque-11">Secuenciación por cursos — Cámara</a></li>
+                <li><a href="#bloque-12">Niveles funcionales — Orquesta y Banda</a></li>
+                <li><a href="#bloque-13">Unidades didácticas — Cámara</a></li>
+                <li><a href="#bloque-14">Unidades didácticas — Orquesta</a></li>
+                <li><a href="#bloque-15">Unidades didácticas — Banda</a></li>
+                <li><a href="#bloque-16">Evaluación</a></li>
+                <li><a href="#bloque-17">Instrumentos de evaluación</a></li>
+                <li><a href="#bloque-18">Pruebas extraordinarias</a></li>
+                <li><a href="#bloque-19">Actividades complementarias</a></li>
+                <li><a href="#bloque-20">Recursos y bibliografía</a></li>
+                <li><a href="#bloque-21">Anexos I–X</a></li>
+            </ol>
+        </section>
+
+        <!-- ==========================================
+             BLOQUE I — MARCO NORMATIVO
+             ========================================== -->
+        <section class="bloque" id="bloque-1">
+            <div class="bloque-header">
+                <div class="bloque-numero">I</div>
+                <h2 class="bloque-titulo">Marco normativo</h2>
+            </div>
+            <span class="tag tag-norma">NORMA VIGENTE</span>
+            
+            <h3>Legislación estatal</h3>
+            <ul>
+                <li> Ley Orgánica 3/2020, de 29 de diciembre (LOMLOE).</li>
+                <li> Real Decreto que regula las enseñanzas artísticas profesionales (en verificación).</li>
+            </ul>
+
+            <h3>Legislación autonómica</h3>
+            <div class="hold-box">
+                <p><strong>Decreto/Orden de la Consejería de Educación de la Junta de Extremadura</strong> que regula el currículo de las Enseñanzas Profesionales de Música en Extremadura. <em>Pendiente de verificación — no se ha proporcionado el texto oficial vigente.</em></p>
+            </div>
+
+            <h3>Normativa de centro</h3>
+            <ul>
+                <li>Proyecto Educativo del centro (en verificación).</li>
+                <li>Programación General Anual (PGA) del curso 2026/2027.</li>
+            </ul>
+        </section>
+
+        <!-- ==========================================
+             BLOQUE II — CONTEXTO INSTITUCIONAL
+             ========================================== -->
+        <section class="bloque" id="bloque-2">
+            <div class="bloque-header">
+                <div class="bloque-numero">II</div>
+                <h2 class="bloque-titulo">Contexto institucional</h2>
+            </div>
+            <span class="tag tag-institucional">DOCUMENTO INSTITUCIONAL</span>
+
+            <div class="hold-box">
+                <p><strong>Datos del centro:</strong> Nombre oficial, código, ubicación, número de unidades, número de alumnos y profesorado del departamento. <em>Pendiente de verificación — no se han proporcionado datos institucionales acreditados.</em></p>
+            </div>
+
+            <h3>Departamento didáctico</h3>
+            <p>Este documento corresponde a las asignaturas de:</p>
+            <ul>
+                <li><strong>Música de Cámara</strong> — 4.º, 5.º y 6.º de Enseñanzas Profesionales</li>
+                <li><strong>Orquesta</strong> — cursos según verificación curricular</li>
+                <li><strong>Banda</strong> — cursos según verificación curricular</li>
+            </ul>
+        </section>
+
+        <!-- ==========================================
+             BLOQUE III — COMPETENCIAS CLAVE
+             ========================================== -->
+        <section class="bloque" id="bloque-3">
+            <div class="bloque-header">
+                <div class="bloque-numero">III</div>
+                <h2 class="bloque-titulo">Competencias clave y perfil de salida</h2>
+            </div>
+            <span class="tag tag-norma">NORMA VIGENTE</span>
+
+            <h3>Competencias clave</h3>
+            <p>Las enseñanzas de Música de Cámara, Orquesta y Banda contribuyen al desarrollo de las siguientes competencias clave del perfil de salida:</p>
+            <ul>
+                <li><strong>CCL</strong> — Competencia en comunicación lingüística</li>
+                <li><strong>CP</strong> — Competencia plurilingüe</li>
+                <li><strong>CSC</strong> — Competencia personal, social y de aprender a aprender</li>
+                <li><strong>CC</strong> — Competencia ciudadana</li>
+                <li><strong>CE</strong> — Competencia en conciencia y expresión culturales</li>
+                <li><strong>CD</strong> — Competencia digital</li>
+                <li><strong>STEM</strong> — Competencia matemática y en ciencia, tecnología e ingeniería</li>
+            </ul>
+        </section>
+
+        <!-- ==========================================
+             BLOQUE IV — OBJETIVOS
+             ========================================== -->
+        <section class="bloque" id="bloque-4">
+            <div class="bloque-header">
+                <div class="bloque-numero">IV</div>
+                <h2 class="bloque-titulo">Objetivos generales</h2>
+            </div>
+            <span class="tag tag-propio">DESARROLLO PROPIO</span>
+
+            <h3>Objetivo General (OG)</h3>
+            <p>Desarrollar las capacidades interpretativas, camerísticas y sinfónicas necesarias para la participación activa en formaciones instrumentales de cámara, orquestales y de banda.</p>
+
+            <h3>Matriz de objetivos por materia</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Objetivo</th>
+                        <th>MC</th>
+                        <th>ORQ</th>
+                        <th>BAN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>OG-01</td><td>Interpretar obras con precisión técnica y musical</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                    <tr><td>OG-02</td><td>Desarrollar la escucha activa y la afinación en grupo</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                    <tr><td>OG-03</td><td>Comprender la función de cada voz/parte en el ensemble</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                    <tr><td>OG-04</td><td>Aplicar criterios de equilibrio, afinación y articulación colectiva</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                    <tr><td>OG-05</td><td>Desarrollar hábitos de trabajo autónomo y preparación individual</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                    <tr><td>OG-06</td><td>Participar en audiciones, conciertos y proyectos musicales</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                    <tr><td>OG-07</td><td>Valorar la música como bien cultural y patrimonio colectivo</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                    <tr><td>OG-08</td><td>Desarrollar la capacidad crítica y autocrítica ante la interpretación</td><td>✓</td><td>—</td><td>—</td></tr>
+                    <tr><td>OG-09</td><td>Adaptar la interpretación a diferentes contextos acústicos y escénicos</td><td>—</td><td>✓</td><td>✓</td></tr>
+                    <tr><td>OG-10</td><td>Colaborar activamente en la construcción del sonido colectivo</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                </tbody>
+            </table>
+            <p><small><strong>MC</strong> = Música de Cámara | <strong>ORQ</strong> = Orquesta | <strong>BAN</strong> = Banda</small></p>
+        </section>
+
+        <!-- ==========================================
+             BLOQUE V — CONTENIDOS
+             ========================================== -->
+        <section class="bloque" id="bloque-5">
+            <div class="bloque-header">
+                <div class="bloque-numero">V</div>
+                <h2 class="bloque-titulo">Contenidos</h2>
+            </div>
+            <span class="tag tag-propio">DESARROLLO PROPIO</span>
+
+            <h3>Contenidos comunes</h3>
+            <table>
+                <thead>
+                    <tr><th>Código</th><th>Contenido</th><th>MC</th><th>ORQ</th><th>BAN</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>CC-01</td><td>Técnica instrumental aplicada al ensemble</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                    <tr><td>CC-02</td><td>Lectura a primera vista colectiva</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                    <tr><td>CC-03</td><td>Afinación y temperamento en grupo</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                    <tr><td>CC-04</td><td>Ritmo y pulso colectivo</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                    <tr><td>CC-05</td><td>Equilibrio sonoro y planos dinámicos</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                    <tr><td>CC-06</td><td>Articulación y fraseo colectivo</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                    <tr><td>CC-07</td><td>Análisis de la partitura en contexto ensemble</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                    <tr><td>CC-08</td><td>Historia del repertorio camerístico/sinfónico</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Contenidos específicos — Música de Cámara</h3>
+            <ul>
+                <li>Comunicación no verbal entre intérpretes</li>
+                <li>Roles de liderazgo y seguimiento en la formación</li>
+                <li>Preparación individual previa al ensayo colectivo</li>
+                <li>Repertorio específico por formación (dúo, trío, cuarteto, quinteto…)</li>
+            </ul>
+
+            <h3>Contenidos específicos — Orquesta</h3>
+            <ul>
+                <li>Función de cada sección en la orquesta</li>
+                <li>Seguimiento de la batuta y señales del director</li>
+                <li>Entradas, ataques y cortes orquestales</li>
+                <li>Adaptación al espacio acústico de la sala</li>
+            </ul>
+
+            <h3>Contenidos específicos — Banda</h3>
+            <ul>
+                <li>Características del sonido de banda vs. orquesta</li>
+                <li>Repertorio original y transcripciones</li>
+                <li>Formaciones específicas dentro de la banda</li>
+                <li>Interpretación de música de calle y pasacalles</li>
+            </ul>
+        </section>
+
+        <!-- ==========================================
+             BLOQUE VI — CRITERIOS DE EVALUACIÓN
+             ========================================== -->
+        <section class="bloque" id="bloque-6">
+            <div class="bloque-header">
+                <div class="bloque-numero">VI</div>
+                <h2 class="bloque-titulo">Criterios de evaluación</h2>
+            </div>
+            <span class="tag tag-propio">DESARROLLO PROPIO</span>
+
+            <table>
+                <thead>
+                    <tr><th>Código</th><th>Criterio de evaluación</th><th>MC</th><th>ORQ</th><th>BAN</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>CE-01</td><td>Interpreta obras con precisión técnica adecuada al nivel</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                    <tr><td>CE-02</td><td>Mantiene la afinación y el equilibrio sonoro en el ensemble</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                    <tr><td>CE-03</td><td>Sigue la dirección musical con atención y respuesta inmediata</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                    <tr><td>CE-04</td><td>Demuestra preparación individual previa al ensayo</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                    <tr><td>CE-05</td><td>Participa activamente en la construcción del sonido colectivo</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                    <tr><td>CE-06</td><td>Lee a primera vista con fluidez y corrección</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                    <tr><td>CE-07</td><td>Aplica criterios de articulación y fraseo adecuados al estilo</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                    <tr><td>CE-08</td><td>Analiza la partitura y comprende su función en el conjunto</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                    <tr><td>CE-09</td><td>Se comunica musicalmente con los compañeros de formación</td><td>✓</td><td>—</td><td>—</td></tr>
+                    <tr><td>CE-10</td><td>Adapta su interpretación al contexto acústico y escénico</td><td>—</td><td>✓</td><td>✓</td></tr>
+                    <tr><td>CE-11</td><td>Demuestra actitud crítica y autocrítica ante su interpretación</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                    <tr><td>CE-12</td><td>Participa en audiciones y conciertos con responsabilidad</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                    <tr><td>CE-13</td><td>Valora la música como patrimonio cultural</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                    <tr><td>CE-14</td><td>Trabaja de forma autónoma en la preparación del repertorio</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                    <tr><td>CE-15</td><td>Colabora positivamente con el grupo y acepta indicaciones</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ==========================================
+             BLOQUE VII — METODOLOGÍA
+             ========================================== -->
+        <section class="bloque" id="bloque-7">
+            <div class="bloque-header">
+                <div class="bloque-numero">VII</div>
+                <h2 class="bloque-titulo">Metodología</h2>
+            </div>
+            <span class="tag tag-propio">DESARROLLO PROPIO</span>
+
+            <h3>Principios metodológicos</h3>
+            <ul>
+                <li><strong>Aprendizaje cooperativo:</strong> El ensayo como espacio de construcción colectiva.</li>
+                <li><strong>Preparación individual previa:</strong> Cada alumno/a llega al ensayo con su parte estudiada.</li>
+                <li><strong>Escucha activa:</strong> Desarrollo de la capacidad de escuchar al conjunto mientras se interpreta.</li>
+                <li><strong>Feedback formativo:</strong> Retroalimentación constante durante el proceso de ensayo.</li>
+                <li><strong>Contextualización:</strong> Comprensión histórica y estilística del repertorio.</li>
+                <li><strong>Progresión:</strong> De lo sencillo a lo complejo, de fragmentos a obras completas.</li>
+            </ul>
+
+            <h3>Fases del ensayo</h3>
+            <ol>
+                <li><strong>Calentamiento colectivo:</strong> Ejercicios de afinación, ritmo y articulación.</li>
+                <li><strong>Lectura y análisis:</strong> Primera toma de contacto con la obra/fragmento.</li>
+                <li><strong>Trabajo por secciones:</strong> Resolución de dificultades técnicas específicas.</li>
+                <li><strong>Ensamblaje:</strong> Integración de todas las voces/partes.</li>
+                <li><strong>Interpretación completa:</strong> Ejecución de la obra con criterios musicales.</li>
+                <li><strong>Evaluación y feedback:</strong> Reflexión colectiva sobre el resultado.</li>
+            </ol>
+        </section>
+
+        <!-- ==========================================
+             BLOQUES VIII-X — REPERTORIO
+             ========================================== -->
+        <section class="bloque" id="bloque-8">
+            <div class="bloque-header">
+                <div class="bloque-numero">VIII</div>
+                <h2 class="bloque-titulo">Repertorio — Banda</h2>
+            </div>
+            <div class="hold-box">
+                <p><strong>Repertorio no confirmado.</strong> El repertorio definitivo depende del acuerdo departamental, la disponibilidad de partituras y la plantilla instrumental del curso 2026/2027.</p>
+            </div>
+            <span class="tag tag-propio">DESARROLLO PROPIO</span>
+            <p>Se trabajará con un repertorio que abarque diferentes estilos y épocas, adaptado al nivel funcional del grupo. La selección definitiva se realizará al inicio del curso académico.</p>
+        </section>
+
+        <section class="bloque" id="bloque-9">
+            <div class="bloque-header">
+                <div class="bloque-numero">IX</div>
+                <h2 class="bloque-titulo">Repertorio — Orquesta</h2>
+            </div>
+            <div class="hold-box">
+                <p><strong>Repertorio no confirmado.</strong> El repertorio definitivo depende de la plantilla instrumental disponible y del acuerdo departamental.</p>
+            </div>
+            <span class="tag tag-propio">DESARROLLO PROPIO</span>
+            <p>Se trabajará con un repertorio que abarque diferentes estilos y épocas, adaptado al nivel funcional del grupo. La selección definitiva se realizará al inicio del curso académico.</p>
+        </section>
+
+        <section class="bloque" id="bloque-10">
+            <div class="bloque-header">
+                <div class="bloque-numero">X</div>
+                <h2 class="bloque-titulo">Repertorio — Música de Cámara</h2>
+            </div>
+            <div class="hold-box">
+                <p><strong>Repertorio orientativo.</strong> La selección definitiva depende de la formación de grupos y del nivel de cada ensemble.</p>
+            </div>
+            <span class="tag tag-propio">DESARROLLO PROPIO</span>
+            <p>Se trabajará con repertorio adaptado a las formaciones de cámara constituidas (dúos, tríos, cuartetos, quintetos…). La selección se realizará en función del nivel y la composición de cada grupo.</p>
+        </section>
+
+        <!-- ==========================================
+             BLOQUES XI-XII — SECUENCIACIÓN Y NIVELES
+             ========================================== -->
+        <section class="bloque" id="bloque-11">
+            <div class="bloque-header">
+                <div class="bloque-numero">XI</div>
+                <h2 class="bloque-titulo">Secuenciación por cursos — Música de Cámara</h2>
+            </div>
+            <span class="tag tag-propio">DESARROLLO PROPIO</span>
+
+            <h3>4.º de Enseñanzas Profesionales</h3>
+            <ul>
+                <li>Inicio en la práctica camerística</li>
+                <li>Formaciones: dúos y tríos</li>
+                <li>Desarrollo de la escucha mutua</li>
+                <li>Repertorio adaptado al nivel inicial de cámara</li>
+            </ul>
+
+            <h3>5.º de Enseñanzas Profesionales</h3>
+            <ul>
+                <li>Consolidación de la práctica camerística</li>
+                <li>Formaciones: tríos y cuartetos</li>
+                <li>Mayor exigencia en afinación y equilibrio</li>
+                <li>Repertorio de dificultad media</li>
+            </ul>
+
+            <h3>6.º de Enseñanzas Profesionales</h3>
+            <ul>
+                <li>Perfeccionamiento camerístico</li>
+                <li>Formaciones: cuartetos y quintetos</li>
+                <li>Exigencia máxima de cohesión y comunicación</li>
+                <li>Repertorio de dificultad avanzada</li>
+                <li>Preparación para pruebas de acceso a enseñanzas superiores</li>
+            </ul>
+        </section>
+
+        <section class="bloque" id="bloque-12">
+            <div class="bloque-header">
+                <div class="bloque-numero">XII</div>
+                <h2 class="bloque-titulo">Niveles funcionales — Orquesta y Banda</h2>
+            </div>
+            <div class="hold-box">
+                <p><strong>Cursos exactos no verificados.</strong> La adscripción de cursos a Orquesta y Banda depende del decreto curricular vigente que no se ha proporcionado.</p>
+            </div>
+            <span class="tag tag-propio">DESARROLLO PROPIO</span>
+
+            <h3>Nivel funcional básico</h3>
+            <p>Alumnos/as en los primeros cursos de EP que inician la práctica orquestal/banda.</p>
+
+            <h3>Nivel funcional medio</h3>
+            <p>Alumnos/as con experiencia que consolidan la práctica ensemble.</p>
+
+            <h3>Nivel funcional avanzado</h3>
+            <p>Alumnos/as de cursos superiores con capacidad para repertorio exigente.</p>
+        </section>
+
+        <!-- ==========================================
+             BLOQUES XIII-XV — UNIDADES DIDÁCTICAS
+             ========================================== -->
+        <section class="bloque" id="bloque-13">
+            <div class="bloque-header">
+                <div class="bloque-numero">XIII</div>
+                <h2 class="bloque-titulo">Unidades didácticas — Música de Cámara</h2>
+            </div>
+            <span class="tag tag-propio">DESARROLLO PROPIO</span>
+
+            <table>
+                <thead>
+                    <tr><th>UD</th><th>Título</th><th>Curso</th><th>Objetivos</th><th>Criterios</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>UD-MC-01</td><td>Introducción a la práctica camerística</td><td>4.º</td><td>OG-01, OG-02</td><td>CE-01, CE-02</td></tr>
+                    <tr><td>UD-MC-02</td><td>El dúo: comunicación a dos</td><td>4.º</td><td>OG-03, OG-08</td><td>CE-03, CE-09</td></tr>
+                    <tr><td>UD-MC-03</td><td>El trío: equilibrio a tres voces</td><td>4.º–5.º</td><td>OG-04, OG-10</td><td>CE-04, CE-05</td></tr>
+                    <tr><td>UD-MC-04</td><td>El cuarteto: polifonía y diálogo</td><td>5.º–6.º</td><td>OG-01, OG-04</td><td>CE-01, CE-07</td></tr>
+                    <tr><td>UD-MC-05</td><td>Preparación de audición</td><td>Todos</td><td>OG-06, OG-10</td><td>CE-12, CE-15</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="bloque" id="bloque-14">
+            <div class="bloque-header">
+                <div class="bloque-numero">XIV</div>
+                <h2 class="bloque-titulo">Unidades didácticas — Orquesta</h2>
+            </div>
+            <span class="tag tag-propio">DESARROLLO PROPIO</span>
+
+            <table>
+                <thead>
+                    <tr><th>UD</th><th>Título</th><th>Nivel</th><th>Objetivos</th><th>Criterios</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>UD-ORQ-01</td><td>Introducción al trabajo orquestal</td><td>Básico</td><td>OG-01, OG-02</td><td>CE-01, CE-03</td></tr>
+                    <tr><td>UD-ORQ-02</td><td>La sección: identidad y función</td><td>Básico–Medio</td><td>OG-03, OG-09</td><td>CE-05, CE-10</td></tr>
+                    <tr><td>UD-ORQ-03</td><td>El tutti: construcción del sonido colectivo</td><td>Medio</td><td>OG-04, OG-10</td><td>CE-02, CE-05</td></tr>
+                    <tr><td>UD-ORQ-04</td><td>Repertorio sinfónico</td><td>Medio–Avanzado</td><td>OG-01, OG-07</td><td>CE-01, CE-07</td></tr>
+                    <tr><td>UD-ORQ-05</td><td>Preparación de concierto</td><td>Todos</td><td>OG-06, OG-09</td><td>CE-10, CE-12</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="bloque" id="bloque-15">
+            <div class="bloque-header">
+                <div class="bloque-numero">XV</div>
+                <h2 class="bloque-titulo">Unidades didácticas — Banda</h2>
+            </div>
+            <span class="tag tag-propio">DESARROLLO PROPIO</span>
+
+            <table>
+                <thead>
+                    <tr><th>UD</th><th>Título</th><th>Nivel</th><th>Objetivos</th><th>Criterios</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>UD-BAN-01</td><td>Introducción al trabajo de banda</td><td>Básico</td><td>OG-01, OG-02</td><td>CE-01, CE-03</td></tr>
+                    <tr><td>UD-BAN-02</td><td>El sonido de banda: características</td><td>Básico–Medio</td><td>OG-03, OG-04</td><td>CE-02, CE-05</td></tr>
+                    <tr><td>UD-BAN-03</td><td>Repertorio original para banda</td><td>Medio</td><td>OG-01, OG-07</td><td>CE-01, CE-07</td></tr>
+                    <tr><td>UD-BAN-04</td><td>Música de calle y pasacalles</td><td>Todos</td><td>OG-06, OG-09</td><td>CE-10, CE-12</td></tr>
+                    <tr><td>UD-BAN-05</td><td>Preparación de concierto</td><td>Todos</td><td>OG-06, OG-10</td><td>CE-12, CE-15</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ==========================================
+             BLOQUE XVI — EVALUACIÓN
+             ========================================== -->
+        <section class="bloque" id="bloque-16">
+            <div class="bloque-header">
+                <div class="bloque-numero">XVI</div>
+                <h2 class="bloque-titulo">Evaluación</h2>
+            </div>
+            <span class="tag tag-propio">DESARROLLO PROPIO</span>
+
+            <h3>Principios de evaluación</h3>
+            <ul>
+                <li><strong>Evaluación continua:</strong> El proceso de aprendizaje se evalúa a lo largo de todo el curso.</li>
+                <li><strong>Evaluación formativa:</strong> La evaluación orienta la mejora, no solo califica.</li>
+                <li><strong>Evaluación criterial:</strong> Se evalúa en función de los criterios de evaluación establecidos.</li>
+                <li><strong>Diversidad de instrumentos:</strong> Se utilizan múltiples instrumentos de evaluación.</li>
+            </ul>
+
+            <div class="hold-box">
+                <p><strong>Ponderaciones de calificación:</strong> Los porcentajes de ponderación de cada criterio/instrumento no se han verificado. Pendiente de normativa de evaluación vigente o acuerdo del claustro.</p>
+            </div>
+
+            <div class="hold-box">
+                <p><strong>Porcentaje mínimo de asistencia:</strong> El umbral de asistencia para evaluación continua no se ha acreditado. Pendiente de normativa aplicable.</p>
+            </div>
+
+            <h3>Tipos de evaluación</h3>
+            <table>
+                <thead>
+                    <tr><th>Tipo</th><th>Descripción</th><th>Instrumentos</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Autoevaluación</td><td>El alumno valora su propio proceso</td><td>Fichas de autoevaluación, diario de ensayo</td></tr>
+                    <tr><td>Coevaluación</td><td>Los compañeros se evalúan mutuamente</td><td>Rúbricas de coevaluación, feedback entre pares</td></tr>
+                    <tr><td>Heteroevaluación</td><td>El profesor evalúa al alumno</td><td>Observación directa, rúbricas, listas de cotejo</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ==========================================
+             BLOQUE XVII — INSTRUMENTOS
+             ========================================== -->
+        <section class="bloque" id="bloque-17">
+            <div class="bloque-header">
+                <div class="bloque-numero">XVII</div>
+                <h2 class="bloque-titulo">Instrumentos de evaluación</h2>
+            </div>
+            <span class="tag tag-propio">DESARROLLO PROPIO</span>
+
+            <table>
+                <thead>
+                    <tr><th>Instrumento</th><th>Tipo</th><th>Criterios asociados</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Observación directa en ensayo</td><td>Procedimiento</td><td>CE-01 a CE-15</td></tr>
+                    <tr><td>Rúbrica de interpretación ensemble</td><td>Instrumento</td><td>CE-01, CE-02, CE-05, CE-07</td></tr>
+                    <tr><td>Lista de cotejo de preparación individual</td><td>Instrumento</td><td>CE-04, CE-14</td></tr>
+                    <tr><td>Registro de asistencia y puntualidad</td><td>Procedimiento</td><td>CE-15</td></tr>
+                    <tr><td>Diario de ensayo / cuaderno de trabajo</td><td>Instrumento</td><td>CE-08, CE-11</td></tr>
+                    <tr><td>Actuación en audición/concierto</td><td>Evidencia</td><td>CE-01, CE-05, CE-10, CE-12</td></tr>
+                    <tr><td>Ficha de autoevaluación</td><td>Instrumento</td><td>CE-11, CE-13</td></tr>
+                    <tr><td>Ficha de coevaluación</td><td>Instrumento</td><td>CE-09, CE-15</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Rúbrica de interpretación ensemble</h3>
+            <table>
+                <thead>
+                    <tr><th>Descriptor</th><th>Insuficiente</th><th>Aceptable</th><th>Notable</th><th>Sobresaliente</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Precisión técnica</strong></td>
+                        <td>Numerosos errores de ejecución que impiden la continuidad</td>
+                        <td>Algunos errores que no rompen el discurso musical</td>
+                        <td>Ejecución limpia con mínima incidencia</td>
+                        <td>Ejecución impecable con dominio total del instrumento</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Afinación colectiva</strong></td>
+                        <td>Afinación sistemáticamente incorrecta</td>
+                        <td>Afinación generalmente correcta con ajustes puntuales</td>
+                        <td>Afinación precisa con atención constante</td>
+                        <td>Afinación excelente y sensibilidad al temperamento</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Equilibrio sonoro</strong></td>
+                        <td>No se percibe atención al equilibrio entre voces</td>
+                        <td>Equilibrio básico aceptable</td>
+                        <td>Equilibrio cuidado con planos dinámicos diferenciados</td>
+                        <td>Equilibrio excelente con sensibilidad al detalle</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Seguimiento de la dirección</strong></td>
+                        <td>No atiende a las indicaciones del director/compañeros</td>
+                        <td>Atiende con retraso o inconsistencia</td>
+                        <td>Respuesta inmediata y adecuada</td>
+                        <td>Anticipación y sensibilidad musical excepcional</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ==========================================
+             BLOQUE XVIII — PRUEBAS EXTRAORDINARIAS
+             ========================================== -->
+        <section class="bloque" id="bloque-18">
+            <div class="bloque-header">
+                <div class="bloque-numero">XVIII</div>
+                <h2 class="bloque-titulo">Pruebas extraordinarias</h2>
+            </div>
+            <div class="hold-box">
+                <p><strong>Requisitos no verificados.</strong> Las condiciones y requisitos de las pruebas extraordinarias dependen de la normativa de evaluación vigente que no se ha proporcionado.</p>
+            </div>
+            <span class="tag tag-propio">DESARROLLO PROPIO</span>
+            <p>La convocatoria extraordinaria se regirá por la normativa de evaluación aplicable. Los criterios mínimos serán los establecidos en los criterios de evaluación CE-01 a CE-15.</p>
+        </section>
+
+        <!-- ==========================================
+             BLOQUE XIX — ACTIVIDADES COMPLEMENTARIAS
+             ========================================== -->
+        <section class="bloque" id="bloque-19">
+            <div class="bloque-header">
+                <div class="bloque-numero">XIX</div>
+                <h2 class="bloque-titulo">Actividades complementarias</h2>
+            </div>
+            <span class="tag tag-propio">DESARROLLO PROPIO</span>
+            <div class="hold-box">
+                <p><strong>Calendario no confirmado.</strong> Las fechas de audiciones y conciertos dependen de la Programación General Anual del centro.</p>
+            </div>
+
+            <h3>Actividades previstas (fechas por confirmar)</h3>
+            <ul>
+                <li>Audición de Navidad</li>
+                <li>Audición de fin de trimestre</li>
+                <li>Concierto de primavera</li>
+                <li>Participación en actos institucionales</li>
+                <li>Intercambios con otros centros (si se programan)</li>
+                <li>Asistencia a conciertos externos</li>
+            </ul>
+        </section>
+
+        <!-- ==========================================
+             BLOQUE XX — RECURSOS
+             ========================================== -->
+        <section class="bloque" id="bloque-20">
+            <div class="bloque-header">
+                <div class="bloque-numero">XX</div>
+                <h2 class="bloque-titulo">Recursos y bibliografía</h2>
+            </div>
+            <span class="tag tag-propio">DESARROLLO PROPIO</span>
+
+            <h3>Recursos materiales</h3>
+            <ul>
+                <li>Salas de ensayo del conservatorio</li>
+                <li>Instrumentos musicales</li>
+                <li>Atriles y partituras</li>
+                <li>Equipos de audio para grabación de ensayos</li>
+                <li>Material didáctico digital</li>
+            </ul>
+
+            <h3>Bibliografía orientativa</h3>
+            <ul>
+                <li>Repertorio estándar de música de cámara por formación</li>
+                <li>Repertorio sinfónico adaptado a nivel funcional</li>
+                <li>Repertorio original para banda</li>
+                <li>Métodos de técnica ensemble</li>
+            </ul>
+        </section>
+
+        <!-- ==========================================
+             BLOQUE XXI — ANEXOS
+             ========================================== -->
+        <section class="bloque" id="bloque-21">
+            <div class="bloque-header">
+                <div class="bloque-numero">XXI</div>
+                <h2 class="bloque-titulo">Anexos I–X</h2>
+            </div>
+            <span class="tag tag-evidencia">EVIDENCIA</span>
+
+            <h3>Anexo I — Matriz de trazabilidad general</h3>
+            <p>Relación completa: Norma → Objetivo → Contenido → Actividad → Repertorio → Evidencia → Instrumento → Criterio → Valoración → Feedback → Mejora → Transferencia.</p>
+
+            <h3>Anexo II — Registro de asistencia modelo</h3>
+            <p>Modelo de hoja de registro de asistencia y puntualidad para ensayos.</p>
+
+            <h3>Anexo III — Ficha de autoevaluación</h3>
+            <p>Modelo de ficha para que el alumno valore su propio proceso de aprendizaje.</p>
+
+            <h3>Anexo IV — Ficha de coevaluación</h3>
+            <p>Modelo de ficha para la evaluación entre compañeros de formación.</p>
+
+            <h3>Anexo V — Rúbrica completa</h3>
+            <p>Rúbrica detallada con todos los descriptores por nivel de logro.</p>
+
+            <h3>Anexo VI — Diario de ensayo</h3>
+            <p>Modelo de cuaderno de trabajo individual para registro del proceso.</p>
+
+            <h3>Anexo VII — Plan de refuerzo</h3>
+            <p>Orientaciones para alumnos que necesiten apoyo en la preparación individual.</p>
+
+            <h3>Anexo VIII — Criterios de preparación individual</h3>
+            <p>Lista de cotejo para verificar la preparación previa al ensayo colectivo.</p>
+
+            <h3>Anexo IX — Registro de feedback formativo</h3>
+            <p>Modelo de registro de las orientaciones dadas durante el proceso de ensayo.</p>
+
+            <h3>Anexo X — Glosario de términos</h3>
+            <p>Definiciones de términos técnicos utilizados en el documento.</p>
+        </section>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p><strong>Programación Didáctica 2026/2027</strong></p>
+        <p>Música de Cámara · Orquesta · Banda</p>
+        <p>Conservatorio Oficial de Música "Tomás Bote Lavado" — Almendralejo</p>
+        <p style="margin-top: 1rem; font-size: 0.75rem; color: #94a3b8;">
+            Documento sujeto a disciplina HOLD · Principio de veracidad normativa
+        </p>
+    </footer>
+
+    <!-- BOTÓN DESCARGA -->
+    <button class="btn-descarga" onclick="window.print()" title="Descargar como PDF">
+        📄
+    </button>
+
+    <script>
+        // Smooth scroll para enlaces del índice
+        document.querySelectorAll('.indice a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Resaltar bloque actual en la navegación
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    document.querySelector('.nav-fixed .nav-title').textContent = 
+                        '📋 ' + (entry.target.querySelector('.bloque-titulo')?.textContent || 'Programación Didáctica 2026/2027');
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.bloque').forEach(bloque => observer.observe(bloque));
+    </script>
+</body>
+</html>
