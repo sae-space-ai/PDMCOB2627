@@ -1,123 +1,43 @@
 import { useState } from 'react';
 import CodeBlock from './CodeBlock';
-import type { Artifact } from '../types';
 
 interface Props {
   documentLoaded: boolean;
 }
 
+interface Artifact {
+  nombre: string;
+  ruta: string;
+  descripcion: string;
+  contenido: string;
+  lenguaje: string;
+  icono: string;
+}
+
 const artifacts: Artifact[] = [
   {
     nombre: 'index.html',
-    ruta: 'index.html',
-    descripcion: 'Documento HTML de visión continua autocontenido con CSS y JS embebidos',
+    ruta: 'deploy/index.html',
+    descripcion: 'Documento HTML de visión continua autocontenido — Portada institucional, índice navegable, bloques I-XXI, etiquetas HOLD, CSS de impresión',
     lenguaje: 'html',
     icono: 'fas fa-file-code',
-    generado: false,
-    contenido: `<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programación Didáctica 2026/2027 — Música de Cámara · Orquesta · Banda</title>
-    <style>
-        /* CSS autocontenido optimizado para impresión PDF */
-        :root {
-            --color-primary: #059669;
-            --color-hold: #d97706;
-            --color-bg: #ffffff;
-            --color-text: #1e293b;
-        }
-        body { font-family: 'Georgia', serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 2rem; }
-        h1, h2, h3 { color: var(--color-primary); }
-        .hold-tag { background: #fef3c7; border: 1px solid #f59e0b; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.75rem; }
-        table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
-        th, td { border: 1px solid #e2e8f0; padding: 0.5rem; text-align: left; }
-        th { background: #f1f5f9; }
-        @media print { body { max-width: 100%; padding: 0; } .no-print { display: none; } }
-        .download-btn { position: fixed; bottom: 2rem; right: 2rem; background: var(--color-primary); color: white; border: none; padding: 1rem; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-    </style>
-</head>
-<body>
-    <!-- Portada institucional -->
-    <header>
-        <h1>Programación Didáctica 2026/2027</h1>
-        <h2>Música de Cámara · Orquesta · Banda</h2>
-        <p>Enseñanzas Profesionales de Música</p>
-    </header>
-    
-    <!-- Índice navegable -->
-    <nav id="indice">
-        <h2>Índice</h2>
-        <ol>
-            <li><a href="#bloque-1">Bloque I — Marco normativo</a></li>
-            <li><a href="#bloque-2">Bloque II — Contexto institucional</a></li>
-            <!-- ... Bloques III a XXI ... -->
-        </ol>
-    </nav>
-    
-    <!-- Contenido de bloques I-XXI -->
-    <!-- Se genera a partir del documento fuente ampliado -->
-    
-    <button class="download-btn no-print" onclick="window.print()" title="Descargar como PDF">
-        📄
-    </button>
-</body>
-</html>`
-  },
-  {
-    nombre: 'README.md',
-    ruta: 'README.md',
-    descripcion: 'Documentación del repositorio con estructura y estado',
-    lenguaje: 'markdown',
-    icono: 'fas fa-book',
-    generado: false,
-    contenido: `# Programación Didáctica 2026/2027
+    contenido: `<!-- ARCHIVO: deploy/index.html -->
+<!-- Este es el documento HTML completo de la Programación Didáctica -->
+<!-- Incluye: portada institucional, índice navegable, 21 bloques, -->
+<!-- etiquetas HOLD, tablas de trazabilidad, rúbricas, CSS de impresión -->
+<!-- y botón de descarga del propio HTML -->
 
-**Música de Cámara · Orquesta · Banda**  
-Enseñanzas Profesionales de Música — Extremadura
+<!-- El archivo completo está en: deploy/index.html -->
+<!-- Tamaño: ~45KB autocontenido (CSS + JS embebidos, sin dependencias) -->
 
----
-
-## Descripción
-
-Programación didáctica del curso 2026/2027 para las asignaturas de Música de Cámara, Orquesta y Banda.
-
-## Estructura de bloques
-
-| Bloque | Contenido |
-|--------|-----------|
-| I | Marco normativo |
-| II | Contexto institucional |
-| III–VII | Objetivos, contenidos, criterios |
-| VIII–X | Repertorio y secuenciación |
-| XI–XV | Metodología y evaluación |
-| XVI–XX | Unidades didácticas y anexos |
-| XXI | Bibliografía |
-
-## Estado de HOLD
-
-Consultar [HOLD_REGISTRY.md](./HOLD_REGISTRY.md) para la lista actualizada de elementos pendientes de verificación.
-
-## Uso
-
-- Abrir \`index.html\` en el navegador para visualización continua
-- Usar Ctrl+P para exportar a PDF
-- El documento es autocontenido (CSS y JS embebidos)
-
-## Actualización
-
-1. Modificar el contenido en el documento fuente
-2. Regenerar el HTML
-3. Commit y push → despliegue automático en Vercel`
+<!-- Para verlo completo, abre el archivo deploy/index.html en tu navegador -->`
   },
   {
     nombre: 'vercel.json',
-    ruta: 'vercel.json',
+    ruta: 'deploy/vercel.json',
     descripcion: 'Configuración de Vercel para despliegue estático',
     lenguaje: 'json',
     icono: 'fas fa-cog',
-    generado: false,
     contenido: `{
   "version": 2,
   "name": "programacion-didactica-2026-2027",
@@ -130,78 +50,164 @@ Consultar [HOLD_REGISTRY.md](./HOLD_REGISTRY.md) para la lista actualizada de el
 }`
   },
   {
+    nombre: 'README.md',
+    ruta: 'deploy/README.md',
+    descripcion: 'Documentación del repositorio con estructura de bloques y estado de HOLD',
+    lenguaje: 'markdown',
+    icono: 'fas fa-book',
+    contenido: `# Programación Didáctica 2026/2027
+
+## Música de Cámara · Orquesta · Banda
+
+**Enseñanzas Profesionales de Música — Extremadura**  
+**Conservatorio Oficial de Música "Tomás Bote Lavado" de Almendralejo**
+
+---
+
+## Descripción
+
+Documento HTML de visión continua correspondiente a la Programación Didáctica del curso 2026/2027 para las asignaturas de Música de Cámara, Orquesta y Banda de las Enseñanzas Profesionales de Música en Extremadura.
+
+## Estructura del documento
+
+| Bloque | Contenido |
+|--------|-----------|
+| I | Marco normativo |
+| II | Contexto institucional |
+| III | Competencias clave y perfil de salida |
+| IV | Objetivos generales |
+| V | Contenidos |
+| VI | Criterios de evaluación |
+| VII | Metodología |
+| VIII | Repertorio — Banda |
+| IX | Repertorio — Orquesta |
+| X | Repertorio — Música de Cámara |
+| XI | Secuenciación por cursos — Cámara |
+| XII | Niveles funcionales — Orquesta y Banda |
+| XIII | Unidades didácticas — Cámara |
+| XIV | Unidades didácticas — Orquesta |
+| XV | Unidades didácticas — Banda |
+| XVI | Evaluación |
+| XVII | Instrumentos de evaluación |
+| XVIII | Pruebas extraordinarias |
+| XIX | Actividades complementarias |
+| XX | Recursos y bibliografía |
+| XXI | Anexos I–X |
+
+## Estado de HOLD
+
+Consultar [HOLD_REGISTRY.md](./HOLD_REGISTRY.md) para la lista actualizada de elementos pendientes de verificación.
+
+### Elementos en HOLD
+
+- ⏳ Ponderaciones de calificación
+- ⏳ Porcentaje mínimo de asistencia
+- ⏳ Requisitos de pruebas extraordinarias
+- ⏳ Repertorio definitivo
+- ⏳ Calendario de conciertos
+- ⏳ Número de sesiones
+
+## Despliegue
+
+Automático en Vercel al hacer push a \`main\`.
+
+## Principio de veracidad normativa
+
+Este documento respeta estrictamente el principio de veracidad normativa y la disciplina HOLD.
+
+## Licencia
+
+Documento educativo de uso institucional.`
+  },
+  {
     nombre: '.gitignore',
-    ruta: '.gitignore',
-    descripcion: 'Archivos ignorados por Git',
+    ruta: 'deploy/.gitignore',
+    descripcion: 'Archivos y directorios ignorados por Git',
     lenguaje: 'text',
     icono: 'fas fa-eye-slash',
-    generado: false,
     contenido: `.vercel
 node_modules
 .DS_Store
 *.log`
   },
   {
+    nombre: 'HOLD_REGISTRY.md',
+    ruta: 'deploy/HOLD_REGISTRY.md',
+    descripcion: 'Registro completo de elementos en HOLD con motivo, fuente necesaria y responsable',
+    lenguaje: 'markdown',
+    icono: 'fas fa-pause-circle',
+    contenido: `# Registro de HOLD
+
+> **Principio rector:** No se cierra un HOLD sin fuente verificable. No se decide por inferencia.
+
+---
+
+## Elementos en HOLD
+
+| ID | Elemento | Motivo | Fuente necesaria | Responsable | Estado |
+|---|---|---|---|---|---|
+| H-001 | Normativa específica EP música Extremadura | Decreto/orden no proporcionado | Decreto/Orden Consejería Educación | Inspección educativa | ⏳ ABIERTO |
+| H-002 | Datos del centro educativo | No proporcionados | Documento institucional / PGA | Equipo directivo | ⏳ ABIERTO |
+| H-003 | Horas lectivas y distribución semanal | No acreditadas | Horario oficial del centro | Jefatura de estudios | ⏳ ABIERTO |
+| H-004 | Porcentajes de calificación | No verificados | Normativa de evaluación | Claustro | ⏳ ABIERTO |
+| H-005 | Repertorio definitivo — Banda | No confirmado | Acuerdo departamental | Director/a Banda | ⏳ ABIERTO |
+| H-006 | Repertorio definitivo — Orquesta | No confirmado | Acuerdo departamental | Director/a Orquesta | ⏳ ABIERTO |
+| H-007 | Porcentaje mínimo de asistencia | No acreditado | Normativa de evaluación | Jefatura de estudios | ⏳ ABIERTO |
+| H-008 | Fechas de audiciones y conciertos | No programadas | Calendario oficial / PGA | Equipo directivo | ⏳ ABIERTO |
+| H-009 | Requisitos de pruebas extraordinarias | No verificados | Normativa de evaluación | Inspección educativa | ⏳ ABIERTO |
+| H-010 | Cursos exactos de Orquesta y Banda | No verificados | Decreto de currículo | Departamento | ⏳ ABIERTO |
+| H-011 | Redondeo de calificaciones | No verificado | Normativa de evaluación | Centro | ⏳ ABIERTO |
+| H-012 | Número de sesiones por unidad | No verificado | Horario 2026/2027 | Centro | ⏳ ABIERTO |
+
+---
+
+## Procedimiento de cierre
+
+1. Identificar la fuente verificable necesaria
+2. Obtener la fuente del responsable indicado
+3. Verificar que la fuente es oficial y vigente
+4. Actualizar el documento con el dato acreditado
+5. Mover el elemento a "Historial de cierres"
+6. Indicar fecha, fuente y persona que cerró`
+  },
+  {
     nombre: 'CHANGELOG.md',
-    ruta: 'CHANGELOG.md',
-    descripcion: 'Registro de versiones y cambios',
+    ruta: 'deploy/CHANGELOG.md',
+    descripcion: 'Registro de versiones y cambios del documento',
     lenguaje: 'markdown',
     icono: 'fas fa-history',
-    generado: false,
     contenido: `# Changelog
 
 ## [1.0.0] — 2026-09-21
 
 ### Añadido
 - Versión inicial de la programación didáctica depurada
-- Bloques I–XXI completos
-- Matrices de objetivos, contenidos y criterios
-- Sistema de clasificación interna (NORMA/TEXTO/INSTITUCIONAL/DESARROLLO/EVIDENCIA/HOLD)
+- Bloques I–XXI completos con estructura navegable
+- Matrices de objetivos (OG, MC, ORQ, BAN)
+- Matrices de contenidos comunes y específicos
+- Matrices de criterios de evaluación (CE-01 a CE-15)
+- Sistema de clasificación interna
+- Registro de HOLD con 12 elementos pendientes
+- HTML autocontenido con CSS y JS embebidos
+- Optimización para impresión PDF
+- Índice navegable con anclas internas
 
 ### HOLD activos
-- 10 elementos pendientes de verificación
-- Ver HOLD_REGISTRY.md para detalle
+- 12 elementos pendientes de verificación
 
-### Eliminado
+### Eliminado (depuración)
 - Duplicidades entre bloques de objetivos
-- Contradicciones normativas no verificables`
-  },
-  {
-    nombre: 'HOLD_REGISTRY.md',
-    ruta: 'HOLD_REGISTRY.md',
-    descripcion: 'Registro completo de elementos en HOLD',
-    lenguaje: 'markdown',
-    icono: 'fas fa-pause-circle',
-    generado: false,
-    contenido: `# HOLD Registry
-
-## Elementos pendientes de verificación
-
-| ID | Bloque | Elemento | Motivo | Fuente necesaria | Responsable | Estado |
-|----|--------|----------|--------|-----------------|-------------|--------|
-| H-001 | I | Normativa EP música Extremadura | No acreditada | Decreto/Orden consejería | Inspección | ABIERTO |
-| H-002 | II | Datos del centro | No proporcionados | PGA / Documento institucional | Equipo directivo | ABIERTO |
-| H-003 | III | Horas lectivas | No acreditadas | Horario oficial | Jefatura estudios | ABIERTO |
-| H-004 | V | Porcentajes calificación | No verificados | Normativa evaluación | Claustro | ABIERTO |
-| H-005 | VIII | Repertorio Banda | No confirmado | Acuerdo departamento | Dir. Banda | ABIERTO |
-| H-006 | IX | Repertorio Orquesta | No confirmado | Acuerdo departamento | Dir. Orquesta | ABIERTO |
-| H-007 | XII | % asistencia mínimo | No acreditado | Normativa evaluación | Jefatura estudios | ABIERTO |
-| H-008 | XV | Fechas conciertos | No programadas | Calendario centro | Equipo directivo | ABIERTO |
-| H-009 | XVIII | Requisitos pruebas extra. | No verificados | Normativa evaluación | Inspección | ABIERTO |
-| H-010 | XX | Cursos Orquesta/Banda | No verificados | Decreto currículo | Departamento | ABIERTO |
-
-## Principio
-
-> No se cierra un HOLD sin fuente verificable.
-> No se decide por inferencia.`
+- Contradicciones normativas no verificables
+- Datos no acreditados
+- Porcentajes de calificación no verificados
+- Repertorio no confirmado`
   },
   {
     nombre: 'deploy.yml',
-    ruta: '.github/workflows/deploy.yml',
-    descripcion: 'Workflow de GitHub Actions para CI/CD',
+    ruta: 'deploy/.github/workflows/deploy.yml',
+    descripcion: 'Workflow de GitHub Actions para CI/CD — pull → build → deploy --prebuilt',
     lenguaje: 'yaml',
     icono: 'fas fa-code-branch',
-    generado: false,
     contenido: `name: Deploy to Vercel
 
 on:
@@ -219,7 +225,7 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Node.js
@@ -243,11 +249,6 @@ jobs:
 
 export default function ArtifactGenerator({ documentLoaded }: Props) {
   const [activeArtifact, setActiveArtifact] = useState(0);
-  const [generated, setGenerated] = useState<Set<number>>(new Set());
-
-  const handleGenerate = (index: number) => {
-    setGenerated(prev => new Set([...prev, index]));
-  };
 
   const handleDownload = (artifact: Artifact) => {
     const blob = new Blob([artifact.contenido], { type: 'text/plain' });
@@ -268,22 +269,35 @@ export default function ArtifactGenerator({ documentLoaded }: Props) {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-5 flex items-center justify-between">
+      <div className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <h3 className="text-lg font-semibold text-white flex items-center gap-2">
             <i className="fas fa-file-export text-emerald-400"></i>
-            Artefactos del proyecto
+            Artefactos de despliegue
           </h3>
           <p className="text-sm text-slate-400 mt-1">
-            {generated.size}/{artifacts.length} artefactos generados
+            {artifacts.length} archivos listos para copiar al repositorio
           </p>
         </div>
         <button
           onClick={handleDownloadAll}
-          className="px-5 py-2.5 bg-emerald-500 text-white rounded-lg text-sm font-medium hover:bg-emerald-600 transition-colors shadow-lg shadow-emerald-500/20"
+          className="px-5 py-2.5 bg-emerald-500 text-white rounded-lg text-sm font-medium hover:bg-emerald-600 transition-colors shadow-lg shadow-emerald-500/20 shrink-0"
         >
           <i className="fas fa-download mr-2"></i>Descargar todos
         </button>
+      </div>
+
+      {/* Warning */}
+      <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-4 flex items-start gap-3">
+        <i className="fas fa-info-circle text-blue-400 mt-0.5"></i>
+        <div>
+          <p className="text-sm font-medium text-blue-400">Cómo usar estos archivos</p>
+          <p className="text-xs text-slate-400 mt-1">
+            Los archivos están en el directorio <code className="bg-blue-500/10 px-1 rounded">deploy/</code> de este proyecto. 
+            Copia todo el contenido de <code className="bg-blue-500/10 px-1 rounded">deploy/</code> a tu repositorio GitHub. 
+            Consulta <code className="bg-blue-500/10 px-1 rounded">INSTRUCCIONES_DESPLIEGUE.md</code> para los pasos detallados.
+          </p>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -309,12 +323,26 @@ export default function ArtifactGenerator({ documentLoaded }: Props) {
                     <div className="text-sm font-medium truncate">{artifact.nombre}</div>
                     <div className="text-[10px] text-slate-500 truncate">{artifact.ruta}</div>
                   </div>
-                  {generated.has(index) && (
-                    <i className="fas fa-check-circle text-emerald-400 text-xs"></i>
-                  )}
                 </button>
               ))}
             </div>
+          </div>
+
+          {/* File Structure */}
+          <div className="mt-4 bg-slate-800/60 border border-slate-700/50 rounded-xl p-4">
+            <h4 className="text-xs font-medium text-slate-400 uppercase tracking-wider mb-3">Estructura del repositorio</h4>
+            <pre className="text-xs text-slate-400 font-mono">
+{`programacion-didactica-2026-2027/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml
+├── .gitignore
+├── CHANGELOG.md
+├── HOLD_REGISTRY.md
+├── README.md
+├── index.html
+└── vercel.json`}
+            </pre>
           </div>
         </div>
 
@@ -329,20 +357,12 @@ export default function ArtifactGenerator({ documentLoaded }: Props) {
                   <p className="text-xs text-slate-500">{artifacts[activeArtifact].descripcion}</p>
                 </div>
               </div>
-              <div className="flex gap-2">
-                <button
-                  onClick={() => handleGenerate(activeArtifact)}
-                  className="px-3 py-1.5 bg-emerald-500/20 text-emerald-400 rounded-lg text-xs font-medium hover:bg-emerald-500/30 transition-colors"
-                >
-                  <i className="fas fa-magic mr-1"></i>Generar
-                </button>
-                <button
-                  onClick={() => handleDownload(artifacts[activeArtifact])}
-                  className="px-3 py-1.5 bg-slate-700/50 text-slate-400 rounded-lg text-xs font-medium hover:text-white transition-colors"
-                >
-                  <i className="fas fa-download mr-1"></i>Descargar
-                </button>
-              </div>
+              <button
+                onClick={() => handleDownload(artifacts[activeArtifact])}
+                className="px-3 py-1.5 bg-emerald-500/20 text-emerald-400 rounded-lg text-xs font-medium hover:bg-emerald-500/30 transition-colors shrink-0"
+              >
+                <i className="fas fa-download mr-1"></i>Descargar
+              </button>
             </div>
             <div className="p-4">
               <CodeBlock code={artifacts[activeArtifact].contenido} language={artifacts[activeArtifact].lenguaje} />
